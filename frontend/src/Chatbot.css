@@ -1,0 +1,203 @@
+/* Chatbot.css */
+
+.chatbot-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 342px;
+  margin: 16px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 -1px 25px rgba(0,0,0,.12);
+  display: none;
+  animation: easeInModal 0.5s forwards;
+  z-index: 999999999999999;
+}
+
+.chatbot-container.show {
+  display: block;
+}
+
+.chatbot-header {
+  padding: 16px 16px;
+  border-radius: 8px 8px 0 0;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  font-weight: 500;
+  font-family: APTypeProText, -apple-system, system-ui, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.chatbot-header svg {
+  float: left;
+  width: 20px;
+  margin-right: 8px;
+}
+
+.markdown-content > p {
+  margin: 0;
+}
+
+.chatbot-messages {
+  height: 386px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  padding: 8px;
+}
+.message {
+  margin: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  width: auto;
+  max-width: 244px;
+  position: relative;
+  clear: both;
+  overflow-wrap: break-word;
+}
+.message a {
+  color: #212129;
+  text-decoration: underline;
+}
+.message a:hover {
+  color: #000;
+  text-decoration: none;
+}
+.user-message {
+  background-color: #dc1928;
+  /* background-color: #31313d; */
+  color: #fff;
+  text-align: right;
+  margin-right: 40px;
+  float: right;
+  min-width: 8px;
+}
+.message:after
+{
+	right: -13px;
+  top: 18px;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.message:after {
+	border-color: rgba(136, 183, 213, 0);
+  border-left-color: #dc1928;
+  /* background-color: #31313d; */
+	border-width: 8px;
+	margin-top: -10px;
+}
+.assistant-message {
+  background-color: #f0f0f0;
+  text-align: left;
+  float: left;
+  margin-left: 36px;
+}
+.assistant-message:before,
+.assistant-message:after {
+  left: -13px;
+  transform: rotate(180deg);
+}
+.assistant-message:after {
+  border-left-color: #f0f0f0;
+}
+
+.assistant-message:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: -34px;
+  top: 4px;
+  display: inline-block;
+  /* background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAOLAAADiwF1yxf7AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAeBJREFUSInd1c2LzWEUB/DPmBkWLKa8TWZKzGpSdI2XkqLcDbpFFgYLWbGRhWRjMbPwR4xiIwmxsJ1EsRqKbqKEssCExSA1IzPX4neu+8ydO/fFrPjW6Xmec87zfc7z/M45P/51tDXptwF5rI31O4zixUID2IZHmMZjXAt5ErqH2Pq35CcwhRH0hq4Ha2Lei0uYxPFWyQtBPpjodsuinsauRH80fPc1S74MH3GuSt+N5yHdVbbzeI+lzRxwBq/QUcM2ElKNTrzG6WpDrSy6jwcYxibZE3SFrRz5eIwTso9eDP+d2NPoBp+wN8inUGogk9iI/bKnnYVFVetBLMeXiHwxcnHTWpLDEhyLwFbhyHyRn0qiGpC9dSmx3wyC1biR6EvhO5DsP1nrBrn5Tg4UsCKk0MB3c3mSZsrPBpvWqXzc9Q18/3ClN7iSEMD3GMuVm1dJ03zoemL8luwbx+VaBzxFH7bgJe6Ffij8ivgaUgzdUPiMJjx9eFZe1OumbbiNg7LqHcOvsHVgu6zL3sGhCGzM3Mysi3acxVvMqGTJDN7ggqyK4TA+t0LeKu7i+kJJroak6MRF/EB/9YZaDa0e+mV/tXLD68IOWTUfkCXHLLS3eMBKfEjWE7glq9w55P8HfgPnOWo6veq66wAAAABJRU5ErkJggg==); */
+  /* background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAsQAAALEBxi1JjQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG/SURBVEiJrdW/axVBEAfwzz2joAGTdBIQVPyBaRXFpLA3URtt1FoEbS3EWNkolmJha6FJIViIhYUSgkQx8UUbK0XwH4hFVCSoxc6Te5e75114X1h2bmfmO7tzM7vUxxTaMSYb+NVGG9sxFHIttBoGyWL+09CvFqbwHh9woq7TQIMATzEa8rO6Tk1T1BhZ4XscpzFcYX8w5o8V+hU8wUJZgAs4jzv41nSngWFcxQM8LCrfYnCDxHkMBhe6/0GG1T4EWJXLTCvGWMFoM67gNvb0INsbNpetr8gxZJmUqy3YhcOhvIVfeI2bmMDPAsFWvML10GchwyK+dHyWc4sdvJSuBZjBvpLd78ejkIfwIqfrcC0PYK3EeVaqhHfYgc8lNp+kxrshnXymxGYNlkpOAEdxRkpFFbbhLI4U1jtcSzCPayUB8pjANEZiTMdaFRaDc66Fk/jaw5jUmd+l1M2GvNDTI3GeKkbtF/5xFRutH5dfS67RNuUUo9KR3lhf83UxIvVQG3N0X3YtXMI5qb7vxfpu3JXK9X9YwWPcx+8qo0NhkOGi1IjH6x+iG1Uv2k48l57IY/ix0QBlOCC9u+P9IPsLQe9RvvDQ+/YAAAAASUVORK5CYII=); */
+  background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzYgMzYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1oaWRkZW49InRydWUiIGZvY3VzYWJsZT0iZmFsc2UiPjxwYXRoIGQ9Ik0wIDE4YTE3Ljk4MyAxNy45ODMgMCAwMDExLjYyNSAxNi44NDJWMS4xNThBMTcuOTgzIDE3Ljk4MyAwIDAwMCAxOHpNMTggMGMtLjQ5MSAwLS45OTkuMDE2LTEuNDc1LjA0OHYxLjI2OGguMDk2YzYuODUuMDQ4IDEyLjM3IDUuMjgxIDEyLjMyMiAxMS42ODgtLjA0OCA2LjM3Ni01LjU5OCAxMS41MTQtMTIuNDE4IDExLjQ5OHYxMS40MzVjLjQ5Mi4wNDcuOTg0LjA2MyAxLjQ3NS4wNjMgOS45NDQgMCAxOC04LjA1NiAxOC0xOFMyNy45NDQgMCAxOCAweiIgZmlsbD0iI0RDMTkyOCI+PC9wYXRoPjwvc3ZnPg==);
+  transform: rotate(360deg);
+}
+
+.user-message:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: -33px;
+  top: 4px;
+  display: inline-block;
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAsQAAALEBxi1JjQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIkSURBVEiJndZNbExRFAfwX6etEpLBQmlNiqKJ2pCyrI/QREjbBYlYsLShFhKxECvpQtiJpOiGhBVBFNEEidhZiqYSlCHxERVhITYs7q0+4703E//kJPPO+Z+Pe945902dfLShF9uxFAui/hue4iGuoFwlzj8oYRgTOI1uNCfsRWzECbzBZbTWGrwvVnQYM2vgz8CB6LO1GvkQxrCy1moSKAltLGYR+mLw+f8RPImTaEzLXpZd+XqM4nuUUXTlJOnCoqRiWOh5GjbE5DvRFGVX1HVn+OzHpamHNmFasl7oM2xK0W8WRjUNM2LMUkHo/VX8SCEuRwMepNjuC6dZlmL7KezH7gK24WZGJbPxJcMm2uZk2O4K7fXc9IZWYhY+Zdib8VF2a4vCEppEIafK47jj7/kuxgqP5fgRTz+J+hxSAaeEqbkYpSzMe15h9fgM41hYpRLCruyJUqqB34KxBrxEB97nkNehB+3xeQnu4UmOTwdeFDCC/gxSJx7jDH7hVhQ4i0dYleHbj9uE404Iy5FED14L34Ms9EXOlgp9U9T/ucIv4EiCsCIm7cwJPoXVkdue0B3FUJLUinemt/I69tYQfAr7cC3+bsdbFZcdoRXjWCu8+LzRrUQ9XmFNjLEjiziAryqOVyPORd+D1Yi9whEHpHw4UtAYuWU5lVeiBeej06BwXc9N2OdF3aBw3wxJ6TnUVUm0WBjFyr8tH4Sej+CGMCCp+A2jl2od5fsnzwAAAABJRU5ErkJggg==);
+}
+
+/* .ai-message.user-message:before {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAsQAAALEBxi1JjQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARlSURBVEiJjZVbbFRVFIa/fc6ZM7deBpkKTGkpGLUx1IgtSOTiFIogmADVKTHRmBhiAkZBSTS+iPqEDyIm+gASYkRDTKMQMApKAhEpqFwiCSZK2g6tiNDaDiDtzJxz9vKh7bRTDsb1ttfl/9f+d9baCh+rr38+EghQd/Lkjh8B5s9f+xSYKdu2akWoBbpAPrft4DuHDr3X54cxYsrPOXfuc5u19jYHTLMTrRMuEgqHoyhVnB5BepYEsws2Htz12+0IDD+nZdAkIirvujPyWodA3QIOMICq6MkZ5/sbW7ZKU6r8fxFIcs3M+5RXP9antUZE+3bYRtB8jdjL2uOMJNfM/E8CaWyZh9Jt3Z4KA0Rsg7KwORwtvkFtIsS6JXFKQwYXCJDGmoHSbdLYMq9IjQL4ouZpiHwJlL4UdNg8aLJ+cRnND0BHJsLPfwRxtaai1OKeKSGq4zYAmZuaPW19OEMwpSD7pOmJh9ThLzqKCBDzY+BOgGVGni0qSixioMRjetykZmrMV6KK8iGIBAUJ43jGR8DigkTSmFoBJMcWVppC7WST9l5h/y8Ol/udQqyrN8fpzgHSPTlqEyEq8Cil6I0WSTK1rECAsKGoLUuxZXmQRKnLuW4Pw7Q4mx7gUp+DqzU7vrvCzUHNlWsu0+I2Wx81ocwsgkCxEcCQplQ5ikeKgqYica+NQlg9u4ReJ4JZegeVFSEsw2DD07M5cPY6c2dNwzRgUk0AiY4jgEWSXBVT0tiyFOTg+KhOReiJlhMvEbzIFDDDtz4AkHM8wpfOYe0ZvDWoZKmByFS/QnXeZefR/HDekL5GLoNyboDOFfJ+OtVHvl18yYFKCyUT/TaG+jXPNwNZVjwYYO+5q5xoz1IdD1EZMznT5VBXHeGFJXE+OZ6hwcn5YAOi4hbK6Ef8O3BFWPfpdYKWiWkZTCk3KQsb1MQDXPk7x6btaa56ChcF+GAIfRYif97ufgEFOS0M5F02LZhMczKOaJfefsXand1kUVgI5fivEeCSkuSqGCrQw9ihG7aV2SiX3WH9FUwvs1lYHeFYl8tf3pCsNbjswndju5jEDXV0XwY47pdRZ452pgUu3hRaO70COEAdjl8pCMfU4dZrI8tuq1/ORjtb9Px+G3WlyvoTKN6FkUk+0npg7C2ksQH9watM2P0mLQ2jO8jzPDzPK5zXVMOMba/AWy/CnPvHwv/Akdavh3hGQBempkty1il5ZnlMonZhjSvHlTdef59vLzgKwLaDBG2b1VWet37tYxj1C0ZH+Pe0y+79GU6dn6O+b+0sIgDw+jrXSS77ISLFg+E62fRX263tJ7zeRMy40TwrUFn18OMdqqph/AdzDSXLVWRi26hS48ztvfgs7uBOtLYwLQw7ggqEQNxuuXimH51VqqohhF1y97jSNBhPqmjs9Fin76cv/3RMkpzxmQqVzAcj6JczxnIothHOvq1UYmB80JegQNTfH8PWzaBWAncBVcOhbqAdUftw2KsmTMjcDuNfGd+l+Nx+DxMAAAAASUVORK5CYII=);
+} */
+
+.ai-message > p:first-child {
+  margin: 0;
+}
+
+
+.chatbot-input-form {
+  display: flex;
+  height: 50px;
+  position: relative;
+}
+.chatbot-input-form input {
+  flex: 1;
+  padding: 8px;
+  border: 0;
+  box-shadow: 0 -1px 25px rgba(0,0,0,.12);
+  border-radius: 0px 0px 8px 8px;
+  font-size: 14px;
+  width: 100%;
+  padding-right: 56px;
+  padding-left: 16px;
+}
+.chatbot-input-form button {
+  padding: 7px 16px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border-radius: 10px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.chatbot-input-form button svg {
+  margin-top: 6px;
+  width: 20px;
+}
+.chatbot-input-form button:hover svg {
+fill: #dc1928
+}
+
+.chatbot-input-form button:focus {
+  background-color: #e8e8e8;
+}
+
+@keyframes easeInModal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.minimise {
+  border: none;
+  background: transparent;
+  float: right;
+  cursor: pointer;
+}

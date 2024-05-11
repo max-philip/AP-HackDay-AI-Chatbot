@@ -1,0 +1,11 @@
+.container {
+  margin: 16px;
+}
+
+.user {
+  color: green;
+}
+
+.agent {
+  color: red;
+}

@@ -1,0 +1,749 @@
+{
+  "nodes": [
+    {
+      "id": "openAIEmbeddings_0",
+      "position": {
+        "x": -248.4073939925055,
+        "y": 485.86560694117924
+      },
+      "type": "customNode",
+      "data": {
+        "id": "openAIEmbeddings_0",
+        "label": "OpenAI Embeddings",
+        "version": 2,
+        "name": "openAIEmbeddings",
+        "type": "OpenAIEmbeddings",
+        "baseClasses": [
+          "OpenAIEmbeddings",
+          "Embeddings"
+        ],
+        "category": "Embeddings",
+        "description": "OpenAI API to generate embeddings for a given text",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "openAIApi"
+            ],
+            "id": "openAIEmbeddings_0-input-credential-credential"
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "options",
+            "options": [
+              {
+                "label": "text-embedding-3-large",
+                "name": "text-embedding-3-large"
+              },
+              {
+                "label": "text-embedding-3-small",
+                "name": "text-embedding-3-small"
+              },
+              {
+                "label": "text-embedding-ada-002",
+                "name": "text-embedding-ada-002"
+              }
+            ],
+            "default": "text-embedding-ada-002",
+            "optional": true,
+            "id": "openAIEmbeddings_0-input-modelName-options"
+          },
+          {
+            "label": "Strip New Lines",
+            "name": "stripNewLines",
+            "type": "boolean",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIEmbeddings_0-input-stripNewLines-boolean"
+          },
+          {
+            "label": "Batch Size",
+            "name": "batchSize",
+            "type": "number",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIEmbeddings_0-input-batchSize-number"
+          },
+          {
+            "label": "Timeout",
+            "name": "timeout",
+            "type": "number",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIEmbeddings_0-input-timeout-number"
+          },
+          {
+            "label": "BasePath",
+            "name": "basepath",
+            "type": "string",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIEmbeddings_0-input-basepath-string"
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "modelName": "text-embedding-ada-002",
+          "stripNewLines": "",
+          "batchSize": "",
+          "timeout": "",
+          "basepath": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings",
+            "name": "openAIEmbeddings",
+            "label": "OpenAIEmbeddings",
+            "description": "OpenAI API to generate embeddings for a given text",
+            "type": "OpenAIEmbeddings | Embeddings"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 426,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -248.4073939925055,
+        "y": 485.86560694117924
+      },
+      "dragging": false
+    },
+    {
+      "id": "openAIAssistant_0",
+      "position": {
+        "x": 1766.4622442103828,
+        "y": -474.61415962521215
+      },
+      "type": "customNode",
+      "data": {
+        "id": "openAIAssistant_0",
+        "label": "OpenAI Assistant",
+        "version": 3,
+        "name": "openAIAssistant",
+        "type": "OpenAIAssistant",
+        "baseClasses": [
+          "OpenAIAssistant"
+        ],
+        "category": "Agents",
+        "description": "An agent that uses OpenAI Assistant API to pick the tool and args to call",
+        "inputParams": [
+          {
+            "label": "Select Assistant",
+            "name": "selectedAssistant",
+            "type": "asyncOptions",
+            "loadMethod": "listAssistants",
+            "id": "openAIAssistant_0-input-selectedAssistant-asyncOptions"
+          },
+          {
+            "label": "Disable File Download",
+            "name": "disableFileDownload",
+            "type": "boolean",
+            "description": "Messages can contain text, images, or files. In some cases, you may want to prevent others from downloading the files. Learn more from OpenAI File Annotation <a target=\"_blank\" href=\"https://platform.openai.com/docs/assistants/how-it-works/managing-threads-and-messages\">docs</a>",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIAssistant_0-input-disableFileDownload-boolean"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Allowed Tools",
+            "name": "tools",
+            "type": "Tool",
+            "list": true,
+            "id": "openAIAssistant_0-input-tools-Tool"
+          },
+          {
+            "label": "Input Moderation",
+            "description": "Detect text that could generate harmful output and prevent it from being sent to the language model",
+            "name": "inputModeration",
+            "type": "Moderation",
+            "optional": true,
+            "list": true,
+            "id": "openAIAssistant_0-input-inputModeration-Moderation"
+          }
+        ],
+        "inputs": {
+          "selectedAssistant": "e290c135-0813-4474-b25d-55dd82bf612d",
+          "tools": [
+            "{{retrieverTool_0.data.instance}}",
+            "{{webBrowser_0.data.instance}}"
+          ],
+          "inputModeration": "",
+          "disableFileDownload": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "openAIAssistant_0-output-openAIAssistant-OpenAIAssistant",
+            "name": "openAIAssistant",
+            "label": "OpenAIAssistant",
+            "description": "An agent that uses OpenAI Assistant API to pick the tool and args to call",
+            "type": "OpenAIAssistant"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 422,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1766.4622442103828,
+        "y": -474.61415962521215
+      }
+    },
+    {
+      "id": "openAI_0",
+      "position": {
+        "x": -247.17170920308573,
+        "y": -166.1670990114432
+      },
+      "type": "customNode",
+      "data": {
+        "id": "openAI_0",
+        "label": "OpenAI",
+        "version": 3,
+        "name": "openAI",
+        "type": "OpenAI",
+        "baseClasses": [
+          "OpenAI",
+          "BaseLLM",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "category": "LLMs",
+        "description": "Wrapper around OpenAI large language models",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "openAIApi"
+            ],
+            "id": "openAI_0-input-credential-credential"
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "options",
+            "options": [
+              {
+                "label": "gpt-3.5-turbo-instruct",
+                "name": "gpt-3.5-turbo-instruct"
+              },
+              {
+                "label": "babbage-002",
+                "name": "babbage-002"
+              },
+              {
+                "label": "davinci-002",
+                "name": "davinci-002"
+              }
+            ],
+            "default": "gpt-3.5-turbo-instruct",
+            "optional": true,
+            "id": "openAI_0-input-modelName-options"
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "step": 0.1,
+            "default": 0.7,
+            "optional": true,
+            "id": "openAI_0-input-temperature-number"
+          },
+          {
+            "label": "Max Tokens",
+            "name": "maxTokens",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-maxTokens-number"
+          },
+          {
+            "label": "Top Probability",
+            "name": "topP",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-topP-number"
+          },
+          {
+            "label": "Best Of",
+            "name": "bestOf",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-bestOf-number"
+          },
+          {
+            "label": "Frequency Penalty",
+            "name": "frequencyPenalty",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-frequencyPenalty-number"
+          },
+          {
+            "label": "Presence Penalty",
+            "name": "presencePenalty",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-presencePenalty-number"
+          },
+          {
+            "label": "Batch Size",
+            "name": "batchSize",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-batchSize-number"
+          },
+          {
+            "label": "Timeout",
+            "name": "timeout",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-timeout-number"
+          },
+          {
+            "label": "BasePath",
+            "name": "basepath",
+            "type": "string",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-basepath-string"
+          },
+          {
+            "label": "BaseOptions",
+            "name": "baseOptions",
+            "type": "json",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAI_0-input-baseOptions-json"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "openAI_0-input-cache-BaseCache"
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "modelName": "gpt-3.5-turbo-instruct",
+          "temperature": 0.7,
+          "maxTokens": "",
+          "topP": "",
+          "bestOf": "",
+          "frequencyPenalty": "",
+          "presencePenalty": "",
+          "batchSize": "",
+          "timeout": "",
+          "basepath": "",
+          "baseOptions": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "openAI_0-output-openAI-OpenAI|BaseLLM|BaseLanguageModel|Runnable",
+            "name": "openAI",
+            "label": "OpenAI",
+            "description": "Wrapper around OpenAI large language models",
+            "type": "OpenAI | BaseLLM | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 576,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -247.17170920308573,
+        "y": -166.1670990114432
+      },
+      "dragging": false
+    },
+    {
+      "id": "retrieverTool_0",
+      "position": {
+        "x": 849.5816247537541,
+        "y": -746.6504175557005
+      },
+      "type": "customNode",
+      "data": {
+        "id": "retrieverTool_0",
+        "label": "Retriever Tool",
+        "version": 2,
+        "name": "retrieverTool",
+        "type": "RetrieverTool",
+        "baseClasses": [
+          "RetrieverTool",
+          "DynamicTool",
+          "Tool",
+          "StructuredTool",
+          "Runnable"
+        ],
+        "category": "Tools",
+        "description": "Use a retriever as allowed tool for agent",
+        "inputParams": [
+          {
+            "label": "Retriever Name",
+            "name": "name",
+            "type": "string",
+            "placeholder": "search_state_of_union",
+            "id": "retrieverTool_0-input-name-string"
+          },
+          {
+            "label": "Retriever Description",
+            "name": "description",
+            "type": "string",
+            "description": "When should agent uses to retrieve documents",
+            "rows": 3,
+            "placeholder": "Searches and returns documents regarding the state-of-the-union.",
+            "id": "retrieverTool_0-input-description-string"
+          },
+          {
+            "label": "Return Source Documents",
+            "name": "returnSourceDocuments",
+            "type": "boolean",
+            "optional": true,
+            "id": "retrieverTool_0-input-returnSourceDocuments-boolean"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Retriever",
+            "name": "retriever",
+            "type": "BaseRetriever",
+            "id": "retrieverTool_0-input-retriever-BaseRetriever"
+          }
+        ],
+        "inputs": {
+          "name": "get_docx_knowledge",
+          "description": "Provides knowledge from the docx pinecone retriever",
+          "retriever": "{{pinecone_0.data.instance}}",
+          "returnSourceDocuments": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "retrieverTool_0-output-retrieverTool-RetrieverTool|DynamicTool|Tool|StructuredTool|Runnable",
+            "name": "retrieverTool",
+            "label": "RetrieverTool",
+            "description": "Use a retriever as allowed tool for agent",
+            "type": "RetrieverTool | DynamicTool | Tool | StructuredTool | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 783,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 849.5816247537541,
+        "y": -746.6504175557005
+      },
+      "dragging": false
+    },
+    {
+      "id": "pinecone_0",
+      "position": {
+        "x": 299.50289531708324,
+        "y": -591.6097595896612
+      },
+      "type": "customNode",
+      "data": {
+        "id": "pinecone_0",
+        "label": "Pinecone",
+        "version": 2,
+        "name": "pinecone",
+        "type": "Pinecone",
+        "baseClasses": [
+          "Pinecone",
+          "VectorStoreRetriever",
+          "BaseRetriever"
+        ],
+        "category": "Vector Stores",
+        "description": "Upsert embedded data and perform similarity or mmr search using Pinecone, a leading fully managed hosted vector database",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "pineconeApi"
+            ],
+            "id": "pinecone_0-input-credential-credential"
+          },
+          {
+            "label": "Pinecone Index",
+            "name": "pineconeIndex",
+            "type": "string",
+            "id": "pinecone_0-input-pineconeIndex-string"
+          },
+          {
+            "label": "Pinecone Namespace",
+            "name": "pineconeNamespace",
+            "type": "string",
+            "placeholder": "my-first-namespace",
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-pineconeNamespace-string"
+          },
+          {
+            "label": "Pinecone Metadata Filter",
+            "name": "pineconeMetadataFilter",
+            "type": "json",
+            "optional": true,
+            "additionalParams": true,
+            "id": "pinecone_0-input-pineconeMetadataFilter-json"
+          },
+          {
+            "label": "Top K",
+            "name": "topK",
+            "description": "Number of top results to fetch. Default to 4",
+            "placeholder": "4",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-topK-number"
+          },
+          {
+            "label": "Search Type",
+            "name": "searchType",
+            "type": "options",
+            "default": "similarity",
+            "options": [
+              {
+                "label": "Similarity",
+                "name": "similarity"
+              },
+              {
+                "label": "Max Marginal Relevance",
+                "name": "mmr"
+              }
+            ],
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-searchType-options"
+          },
+          {
+            "label": "Fetch K (for MMR Search)",
+            "name": "fetchK",
+            "description": "Number of initial documents to fetch for MMR reranking. Default to 20. Used only when the search type is MMR",
+            "placeholder": "20",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-fetchK-number"
+          },
+          {
+            "label": "Lambda (for MMR Search)",
+            "name": "lambda",
+            "description": "Number between 0 and 1 that determines the degree of diversity among the results, where 0 corresponds to maximum diversity and 1 to minimum diversity. Used only when the search type is MMR",
+            "placeholder": "0.5",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-lambda-number"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Document",
+            "name": "document",
+            "type": "Document",
+            "list": true,
+            "optional": true,
+            "id": "pinecone_0-input-document-Document"
+          },
+          {
+            "label": "Embeddings",
+            "name": "embeddings",
+            "type": "Embeddings",
+            "id": "pinecone_0-input-embeddings-Embeddings"
+          }
+        ],
+        "inputs": {
+          "document": [],
+          "embeddings": "{{openAIEmbeddings_0.data.instance}}",
+          "pineconeIndex": "testforhack2",
+          "pineconeNamespace": "",
+          "pineconeMetadataFilter": "",
+          "topK": "",
+          "searchType": "similarity",
+          "fetchK": "",
+          "lambda": ""
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "description": "",
+            "options": [
+              {
+                "id": "pinecone_0-output-retriever-Pinecone|VectorStoreRetriever|BaseRetriever",
+                "name": "retriever",
+                "label": "Pinecone Retriever",
+                "description": "",
+                "type": "Pinecone | VectorStoreRetriever | BaseRetriever"
+              },
+              {
+                "id": "pinecone_0-output-vectorStore-Pinecone|VectorStore",
+                "name": "vectorStore",
+                "label": "Pinecone Vector Store",
+                "description": "",
+                "type": "Pinecone | VectorStore"
+              }
+            ],
+            "default": "retriever"
+          }
+        ],
+        "outputs": {
+          "output": "retriever"
+        },
+        "selected": false
+      },
+      "width": 300,
+      "height": 557,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 299.50289531708324,
+        "y": -591.6097595896612
+      },
+      "dragging": false
+    },
+    {
+      "id": "webBrowser_0",
+      "position": {
+        "x": 855.1104712105753,
+        "y": 147.26167334582306
+      },
+      "type": "customNode",
+      "data": {
+        "id": "webBrowser_0",
+        "label": "Web Browser",
+        "version": 1,
+        "name": "webBrowser",
+        "type": "WebBrowser",
+        "baseClasses": [
+          "WebBrowser",
+          "Tool",
+          "StructuredTool",
+          "Runnable"
+        ],
+        "category": "Tools",
+        "description": "Gives agent the ability to visit a website and extract information",
+        "inputParams": [],
+        "inputAnchors": [
+          {
+            "label": "Language Model",
+            "name": "model",
+            "type": "BaseLanguageModel",
+            "id": "webBrowser_0-input-model-BaseLanguageModel"
+          },
+          {
+            "label": "Embeddings",
+            "name": "embeddings",
+            "type": "Embeddings",
+            "id": "webBrowser_0-input-embeddings-Embeddings"
+          }
+        ],
+        "inputs": {
+          "model": "{{openAI_0.data.instance}}",
+          "embeddings": "{{openAIEmbeddings_0.data.instance}}"
+        },
+        "outputAnchors": [
+          {
+            "id": "webBrowser_0-output-webBrowser-WebBrowser|Tool|StructuredTool|Runnable",
+            "name": "webBrowser",
+            "label": "WebBrowser",
+            "description": "Gives agent the ability to visit a website and extract information",
+            "type": "WebBrowser | Tool | StructuredTool | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 281,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 855.1104712105753,
+        "y": 147.26167334582306
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "retrieverTool_0",
+      "sourceHandle": "retrieverTool_0-output-retrieverTool-RetrieverTool|DynamicTool|Tool|StructuredTool|Runnable",
+      "target": "openAIAssistant_0",
+      "targetHandle": "openAIAssistant_0-input-tools-Tool",
+      "type": "buttonedge",
+      "id": "retrieverTool_0-retrieverTool_0-output-retrieverTool-RetrieverTool|DynamicTool|Tool|StructuredTool|Runnable-openAIAssistant_0-openAIAssistant_0-input-tools-Tool"
+    },
+    {
+      "source": "pinecone_0",
+      "sourceHandle": "pinecone_0-output-retriever-Pinecone|VectorStoreRetriever|BaseRetriever",
+      "target": "retrieverTool_0",
+      "targetHandle": "retrieverTool_0-input-retriever-BaseRetriever",
+      "type": "buttonedge",
+      "id": "pinecone_0-pinecone_0-output-retriever-Pinecone|VectorStoreRetriever|BaseRetriever-retrieverTool_0-retrieverTool_0-input-retriever-BaseRetriever"
+    },
+    {
+      "source": "openAIEmbeddings_0",
+      "sourceHandle": "openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings",
+      "target": "pinecone_0",
+      "targetHandle": "pinecone_0-input-embeddings-Embeddings",
+      "type": "buttonedge",
+      "id": "openAIEmbeddings_0-openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings-pinecone_0-pinecone_0-input-embeddings-Embeddings"
+    },
+    {
+      "source": "openAI_0",
+      "sourceHandle": "openAI_0-output-openAI-OpenAI|BaseLLM|BaseLanguageModel|Runnable",
+      "target": "webBrowser_0",
+      "targetHandle": "webBrowser_0-input-model-BaseLanguageModel",
+      "type": "buttonedge",
+      "id": "openAI_0-openAI_0-output-openAI-OpenAI|BaseLLM|BaseLanguageModel|Runnable-webBrowser_0-webBrowser_0-input-model-BaseLanguageModel"
+    },
+    {
+      "source": "openAIEmbeddings_0",
+      "sourceHandle": "openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings",
+      "target": "webBrowser_0",
+      "targetHandle": "webBrowser_0-input-embeddings-Embeddings",
+      "type": "buttonedge",
+      "id": "openAIEmbeddings_0-openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings-webBrowser_0-webBrowser_0-input-embeddings-Embeddings"
+    },
+    {
+      "source": "webBrowser_0",
+      "sourceHandle": "webBrowser_0-output-webBrowser-WebBrowser|Tool|StructuredTool|Runnable",
+      "target": "openAIAssistant_0",
+      "targetHandle": "openAIAssistant_0-input-tools-Tool",
+      "type": "buttonedge",
+      "id": "webBrowser_0-webBrowser_0-output-webBrowser-WebBrowser|Tool|StructuredTool|Runnable-openAIAssistant_0-openAIAssistant_0-input-tools-Tool"
+    }
+  ]
+}
